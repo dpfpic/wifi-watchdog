@@ -1,3 +1,7 @@
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Linux-orange)
+
 # 🚀 WiFi Watchdog Intelligent
 
 WiFi Watchdog is a lightweight and intelligent Linux tool that automatically monitors and repairs Wi-Fi connectivity issues.
