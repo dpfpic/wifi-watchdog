@@ -2,11 +2,38 @@
 
 set -e
 
-echo "🚀 Installation WiFi Watchdog..."
+echo "🚀 WiFi Watchdog - Installation universelle"
 
-# Dépendances
-apt update
-apt install -y libnotify-bin iw wireless-tools
+# Détection distro
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    DISTRO=$ID
+else
+    echo "❌ Impossible de détecter la distribution"
+    exit 1
+fi
+
+echo "📦 Distribution détectée : $DISTRO"
+
+install_packages() {
+    case "$DISTRO" in
+        ubuntu|debian|linuxmint)
+            apt update
+            apt install -y libnotify-bin iw wireless-tools network-manager dhcpcd5
+            ;;
+        fedora)
+            dnf install -y libnotify iw NetworkManager dhclient
+            ;;
+        arch|manjaro)
+            pacman -Sy --noconfirm libnotify iw networkmanager dhclient
+            ;;
+        *)
+            echo "⚠️ Distribution non officiellement supportée, tentative générique..."
+            ;;
+    esac
+}
+
+install_packages
 
 # Script watchdog
 cat << 'EOF' > /usr/local/bin/wifi-check
@@ -77,10 +104,10 @@ touch /var/log/wifi-state.log
 chmod 666 /var/log/wifi-watchdog.log
 chmod 666 /var/log/wifi-state.log
 
-# Service
+# Systemd service
 cat << 'EOF' > /etc/systemd/system/wifi-check.service
 [Unit]
-Description=WiFi Check Intelligent
+Description=WiFi Watchdog Intelligent
 
 [Service]
 Type=oneshot
@@ -106,5 +133,5 @@ systemctl daemon-reload
 systemctl enable wifi-check.timer
 systemctl start wifi-check.timer
 
-echo "✅ Installation terminée !"
-echo "👉 Vérifie avec : systemctl list-timers | grep wifi"
+echo "✅ Installation terminée"
+echo "👉 Vérification : systemctl list-timers | grep wifi"
