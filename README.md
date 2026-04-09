@@ -46,12 +46,12 @@ WiFi Watchdog runs periodically using a systemd timer:
    - Renew DHCP lease
    - Restart NetworkManager
    - Reset Wi-Fi radio
-
+     
 ---
 
-## 📊 Overview
+##  License
 
-WiFi Watchdog runs silently in the background and automatically repairs network issues without user interaction.
+This project is licensed under the MIT License. See the [LICENSE](LICENCE) file for more details.
 
 ---
 
@@ -61,9 +61,3 @@ WiFi Watchdog runs silently in the background and automatically repairs network 
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/dpfpic/wifi-watchdog/main/wifi-watchdog-install.sh | sudo bash
-
----
-
-# License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENCE) file for more details.
