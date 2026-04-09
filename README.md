@@ -49,6 +49,12 @@ WiFi Watchdog runs periodically using a systemd timer:
 
 ---
 
+## 📊 Overview
+
+WiFi Watchdog runs silently in the background and automatically repairs network issues without user interaction.
+
+---
+
 # 📦 Installation
 
 ## One-line install (recommended)
