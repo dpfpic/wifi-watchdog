@@ -1,6 +1,6 @@
-# wifi-watchdog
-wifi-watchdog/
-│
-├── wifi-watchdog-install.sh
-├── README.md
-└── (optionnel) wifi-check (script seul)
+# WiFi Watchdog Intelligent
+
+## Installation
+
+```bash
+curl -sSL https://raw.githubusercontent.com/dpfpic/wifi-watchdog/main/wifi-watchdog-install.sh | sudo bash
