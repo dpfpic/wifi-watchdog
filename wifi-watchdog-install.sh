@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]; then
+  echo "❌ Lance en root (sudo)"
+  exit 1
+fi
+
 set -e
 
 echo "🚀 WiFi Watchdog - Installation universelle"
