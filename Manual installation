@@ -1,0 +1,4 @@
+git clone https://github.com/dpfpic/wifi-watchdog.git
+cd wifi-watchdog
+chmod +x wifi-watchdog-install.sh
+sudo ./wifi-watchdog-install.sh
